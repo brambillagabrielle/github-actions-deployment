@@ -15,6 +15,20 @@ This project was proposed in the [DevOps Path from roadmap.sh](https://roadmap.s
 index.html
 ```
 
+## Prerequisites
+
+Before pushing to the repository to deploy the site, it's necessary to **configure GitHub Actions as Source of Build and Deployment**:
+
+1. In the repository, navigate to the ***Settings*** tab
+2. In Settings, in the left menu, click in ***Pages*** (under *Code and automation*)
+3. In the *Build and deployment* section, select ***GitHub Actions*** in the dropdown menu for ***Source*** (by default, the value will be set to "Deploy from a branch")
+
+Without this configuration, the deployment job may result in the error below:
+
+> [!CAUTION]
+> "Get Pages site failed. Please verify that the repository has Pages enabled and configured to build using GitHub Actions, or consider exploring the `enablement` parameter for this action.
+"
+
 ## Pipeline Structure
 
 ### Trigger
