@@ -23,9 +23,9 @@ Before pushing to the repository to deploy the site, it's necessary to **configu
 2. In Settings, in the left menu, click in ***Pages*** (under *Code and automation*)
 3. In the *Build and deployment* section, select ***GitHub Actions*** in the dropdown menu for ***Source*** (by default, the value will be set to "Deploy from a branch")
 
-Without this configuration, the deployment job may result in the error below:
-
-> [!CAUTION]
+> [!WARNING]
+> Without this configuration, the deployment job may result in the error below:
+> 
 > "Get Pages site failed. Please verify that the repository has Pages enabled and configured to build using GitHub Actions, or consider exploring the `enablement` parameter for this action.
 "
 
@@ -54,7 +54,7 @@ permissions:
 
 ### 📦 Build
 
-The **runner** for both jobs (Build and later Deploy) is defined is [Ubuntu, in the latest version](https://docs.github.com/pt/actions/reference/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories), provided by GitHub:
+The **runner** for both jobs (Build and later Deploy) is defined as [Ubuntu, in the latest version](https://docs.github.com/pt/actions/reference/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories), by GitHub:
 
 ```yaml
 jobs:
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
 ```
 
-The first step in the Build job is to execute a **Checkout**, which will **clone the related repository**:
+The first step in the Build job is to execute a **Checkout**, which will **clone the content of the current repository**:
 
 ```yaml
     steps:
@@ -77,7 +77,7 @@ Next, since this pipeline is a **custom workflow to deploy the static site to Gi
         uses: actions/configure-pages@v4
 ```
 
-Last, the [`upload-pages-artifact`](https://docs.github.com/pt/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages#configuring-the-upload-pages-artifact-action) action is executed to package/compress all the files in the root directory (current, or `.`) for later deployment:
+Last, the [`upload-pages-artifact`](https://docs.github.com/pt/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages#configuring-the-upload-pages-artifact-action) action is executed to package/compress all the files in the root directory (current, or `.`) for deployment:
 
 ```yaml
       - name: Upload Pages Artifact
@@ -103,3 +103,4 @@ After the Build job, the **Deploy is executed**, in which is defined the [`envir
         uses: actions/deploy-pages@v4
 
 ```
+
