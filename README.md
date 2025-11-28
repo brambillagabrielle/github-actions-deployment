@@ -31,7 +31,7 @@ Without this configuration, the deployment job may result in the error below:
 
 ## Pipeline Structure
 
-### Trigger
+### ⚡ Trigger
 
 Triggers are **events that causes a workflow to start running**, such as [pushing changes to the repository](https://docs.github.com/pt/actions/reference/workflows-and-actions/events-that-trigger-workflows#push), specifically in the `main` branch, like used in the following case:
 
@@ -41,7 +41,7 @@ on:
     branches: ["main"]
 ```
 
-### Permissions
+### 🔑 Permissions
 
 To **enable the job to deploy to GitHub Actions**, the default permissions for the token `GITHUB_TOKEN` are modified:
 
@@ -52,7 +52,7 @@ permissions:
   id-token: write
 ```
 
-### Build
+### 📦 Build
 
 The **runner** for both jobs (Build and later Deploy) is defined is [Ubuntu, in the latest version](https://docs.github.com/pt/actions/reference/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories), provided by GitHub:
 
@@ -86,7 +86,7 @@ Last, the [`upload-pages-artifact`](https://docs.github.com/pt/pages/getting-sta
           path: .
 ```
 
-### Deploy
+### 🚀 Deploy
 
 After the Build job, the **Deploy is executed**, in which is defined the [`environment` as `github-pages`](https://docs.github.com/pt/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages#implantar-artefatos-do-github-pages) and the artifact generated in the last step is, finally, deployed:
 
@@ -101,4 +101,5 @@ After the Build job, the **Deploy is executed**, in which is defined the [`envir
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 ```
