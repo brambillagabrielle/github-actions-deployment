@@ -22,7 +22,7 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
-      # uploads the current directory's content (index.html)
+      # uploads the current directory's content in root (index.html)
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
